@@ -95,3 +95,71 @@ function Q3() {
 }
 
 Q3();
+
+// 👉 4) Given an array of size N containing only 0s, 1s, and 2s; sort the array in ascending order without sort.
+// arr = [ 0, 2, 1, 2, 1, 0 ]
+// Output: [ 0, 0, 1, 1, 2, 2 ]
+
+const sortArray = (arr) => {
+  let array = arr.slice();
+  let low = 0;
+  let mid = 0;
+  let high = array.length - 1;
+
+  while (mid <= high) {
+    switch (array[mid]) {
+      case 0:
+        [array[low], array[mid]] = [array[mid], array[low]];
+        low++;
+        mid++;
+        break;
+      case 1:
+        mid++;
+        break;
+      case 2:
+        [array[mid], array[high]] = [array[high], array[mid]];
+        high--;
+        break;
+    }
+  }
+  return array;
+};
+
+function Q4() {
+  const arr = [0, 2, 1, 2, 1, 0];
+  const finalArray = sortArray(arr);
+  console.log({ arr, finalArray });
+}
+
+Q4();
+
+// 👉 5) Move all negative numbers to beginning and positive to end without extra space
+// Input: [-12, 11, -13, -5, 6, -7, 5, -3, -6]
+// Output:[  -12, -13, -5, -7, -3,-6,   5,  6, 11]
+
+const reArrange = (array) => {
+  if (array.length === 0) {
+    console.log("Array is empty");
+    return;
+  }
+  let j = 0;
+  let temp;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] < 0) {
+      if (i != j) {
+        temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+      }
+      j++;
+    }
+  }
+};
+
+function Q5() {
+  const array = [-12, 11, -13, -5, 6, -7, 5, -3, -6];
+  reArrange(array);
+  console.log({ array });
+}
+
+Q5();
