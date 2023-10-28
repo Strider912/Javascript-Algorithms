@@ -44,24 +44,24 @@ const findMaxMin = (array) => {
     return;
   }
 
-  let minNumber = array[0];
-  let maxNumber = array[0];
+  let minElement = array[0];
+  let maxElement = array[0];
 
   for (let i = 1; i < array.length; i += 2) {
     if (i == array.length - 1) {
-      minNumber = Math.min(minNumber, array[i]);
-      maxNumber = Math.max(maxNumber, array[i]);
+      minElement = Math.min(minElement, array[i]);
+      maxElement = Math.max(maxElement, array[i]);
     } else {
       if (array[i] < array[i + 1]) {
-        minNumber = Math.min(minNumber, array[i]);
-        maxNumber = Math.max(maxNumber, array[i + 1]);
+        minElement = Math.min(minElement, array[i]);
+        maxElement = Math.max(maxElement, array[i + 1]);
       } else {
-        minNumber = Math.min(minNumber, array[i + 1]);
-        maxNumber = Math.max(maxNumber, array[i]);
+        minElement = Math.min(minElement, array[i + 1]);
+        maxElement = Math.max(maxElement, array[i]);
       }
     }
   }
-  console.log({ minNumber, maxNumber });
+  console.log({ minElement, maxElement });
 };
 
 function Q2() {
@@ -70,3 +70,28 @@ function Q2() {
 }
 
 Q2();
+
+// 👉 3) Find the "Kth" max and min element of an array
+// array=[54, 21, 34, 78, 62, 47]
+// K = 2;
+// Output: kth Min => 34, kth Max => 62
+
+const findkthMinMax = (array, k) => {
+  if (k < 1 && k > array.length) {
+    console.log("Invalid value of K Provided");
+  }
+
+  let minElement, maxElement;
+  const sortedArray = array.slice().sort((a, b) => a - b);
+
+  minElement = sortedArray[k - 1];
+  maxElement = sortedArray[sortedArray.length - k];
+  console.log({ minElement, maxElement, sortedArray });
+};
+
+function Q3() {
+  const numbers = [54, 21, 34, 78, 62, 47];
+  findkthMinMax(numbers, 2);
+}
+
+Q3();
