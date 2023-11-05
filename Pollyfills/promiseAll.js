@@ -20,7 +20,6 @@ const customPromisePollyfilee = (taskList) => {
           results[index] = data;
           promiseCompleted++;
           if (promiseCompleted === taskList.length) {
-            console.log("completed all");
             resolve(results);
           }
         })
