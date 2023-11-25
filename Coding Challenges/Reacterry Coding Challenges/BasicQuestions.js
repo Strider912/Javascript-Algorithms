@@ -58,3 +58,37 @@ Q2();
 
 // Directions
 // If the input array is empty, return an empty array.
+
+function isLeapYear(year) {
+  if (year <= 0) {
+    return false; // Year should be greater than 0
+  } else if (year % 400 === 0) {
+    return true; // Divisible by 400
+  } else if (year % 100 === 0) {
+    return false; // Divisible by 100, but not by 400
+  } else if (year % 4 === 0) {
+    return true; // Divisible by 4, but not by 100
+  } else {
+    return false; // Not divisible by 4
+  }
+}
+
+function Q3() {
+  console.log(isLeapYear(2000)); // true (divisible by 400)
+  console.log(isLeapYear(2020)); // true (divisible by 4, but not by 100)
+  console.log(isLeapYear(1900)); // false (divisible by 100, but not by 400)
+  console.log(isLeapYear(2022)); // false (not divisible by 4)
+  console.log(isLeapYear(-100)); // false (year is less than or equal to 0)
+}
+
+Q3();
+// 👉 3) Leap year
+// Write a function isLeapYear(year) that takes in an integer number year as the argument and returns true if year is a leap year, and false otherwise.
+// A leap year is:
+// divisible by 400
+// divisible by 4, but not by 100
+
+// Directions
+// Should return false if year is less than or equal to 0.
+// Should return true if year is a leap year.
+// Should return false if year is not a leap year.
