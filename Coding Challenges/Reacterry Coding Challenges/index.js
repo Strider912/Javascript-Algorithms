@@ -1,25 +1,13 @@
-const reverseArray = (array) => {
-  let rightIndex = array.length - 1;
-  let temp;
+function splitSentence(sentence) {
+  // Using regular expression to split the sentence into words
+  // Words are defined as sequences of characters (including special characters)
+  // Adjacent special characters to words are treated as part of the word
+  const words = sentence.match(/\b\w+\b|[^\s]/g) || [];
 
-  for (let leftIndex = 0; leftIndex < array.length / 2; leftIndex++) {
-    temp = array[leftIndex];
-    array[leftIndex] = array[rightIndex];
-    array[rightIndex] = temp;
-    rightIndex--;
-  }
-};
-
-function Q2() {
-  const numbers = [10, 20, 30, 40, 50];
-  reverseArray(numbers);
-  console.log({ numbers });
+  return words;
 }
 
-Q2();
-// 👉 Array.reverse
-// In this coding challenge, you will be implementing a function called reverseArray(array, value) that takes one argument: an array.
-//  The function should reverse the order of the elements in the array.
-
-// Directions
-// If the input array is empty, return an empty array.
+// Example
+const sentence = "Hello, world! Hurray! This is a sentence.";
+const result = splitSentence(sentence);
+console.log(result);
