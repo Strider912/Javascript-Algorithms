@@ -32,5 +32,3 @@ const callback = (prev, curr) => prev + curr;
 
 const actualResult = array.customReduce(callback, initialValue);
 const expectedResult = array.reduce(callback, initialValue);
-
-console.log({ actualResult, expectedResult });
